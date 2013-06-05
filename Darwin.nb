@@ -1,0 +1,230 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      7130,        221]
+NotebookOptionsPosition[      6337,        191]
+NotebookOutlinePosition[      6752,        207]
+CellTagsIndexPosition[      6709,        204]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Text statistics", "Section",
+ CellChangeTimes->{{3.5753502936287003`*^9, 3.5753503155755444`*^9}, {
+  3.579427745212758*^9, 3.579427745489263*^9}}],
+
+Cell[TextData[{
+ StyleBox[" a)",
+  FontWeight->"Bold"],
+ " Ignoring capitalization, how many different words are there in Darwin' s \
+Origin Of Species?Evaluate ExampleData[{\"Text\", \"OriginOfSpecies\"}] to \
+obtain the text."
+}], "Text",
+ CellChangeTimes->{{3.5753502936287003`*^9, 3.575350342341982*^9}}],
+
+Cell["\<\
+I converted the \"Origin of Species\" excerpt to a string and counted all \
+words  (small, capitalized and numeric)
+\
+\>", "Text",
+ CellChangeTimes->{{3.57535039134823*^9, 3.575350411558277*^9}, {
+  3.5753504679137*^9, 3.575350476440818*^9}},
+ Background->GrayLevel[0.85]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"dataEval", "=", 
+   RowBox[{"Evaluate", " ", 
+    RowBox[{"ExampleData", "[", 
+     RowBox[{"{", 
+      RowBox[{"\"\<Text\>\"", ",", "\"\<OriginOfSpecies\>\""}], "}"}], 
+     "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"data", "=", 
+    RowBox[{"dataEval", "//", "ToString"}]}], ";"}], " ", 
+  RowBox[{"(*", 
+   RowBox[{
+   "dataEval", " ", "is", " ", "converted", " ", "to", " ", "string"}], 
+   "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{"Non", "-", 
+    RowBox[{"white", " ", "space"}]}], "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"wordlist", "=", 
+    RowBox[{"StringSplit", "[", 
+     RowBox[{"data", ",", 
+      RowBox[{"RegularExpression", "[", "\"\<\\\\s\>\"", "]"}]}], "]"}]}], 
+   ";"}], " "}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"wordsAll", "=", 
+    RowBox[{"Flatten", "[", 
+     RowBox[{"StringCases", "[", 
+      RowBox[{"wordlist", ",", 
+       RowBox[{"RegularExpression", "[", "\"\<([a-zA-Z0-9]+)\>\"", "]"}]}], 
+      "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{"Total", " ", "Number", " ", "of", " ", "Words"}], 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Length", "[", "wordsAll", "]"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"wordsSmallAndNumbers", "=", 
+    RowBox[{"Flatten", "[", 
+     RowBox[{"StringCases", "[", 
+      RowBox[{"wordlist", ",", 
+       RowBox[{"RegularExpression", "[", "\"\<([a-z0-9]+)\>\"", "]"}]}], 
+      "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{"Number", " ", "of", " ", "Words"}], 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Length", "[", "wordsSmallAndNumbers", "]"}]}], "Input",
+ CellChangeTimes->{{3.575350174722281*^9, 3.5753502062811747`*^9}, {
+  3.575350254201902*^9, 3.575350271097741*^9}, {3.575350451935944*^9, 
+  3.5753505503494177`*^9}, {3.575350656741723*^9, 3.5753506886949043`*^9}}],
+
+Cell[BoxData["151206"], "Output",
+ CellChangeTimes->{
+  3.5753502763972607`*^9, {3.575350500466899*^9, 3.5753505410205717`*^9}, {
+   3.5753506612265797`*^9, 3.5753506907188263`*^9}, 3.575350995438611*^9, 
+   3.57556736099368*^9}],
+
+Cell[BoxData["149556"], "Output",
+ CellChangeTimes->{
+  3.5753502763972607`*^9, {3.575350500466899*^9, 3.5753505410205717`*^9}, {
+   3.5753506612265797`*^9, 3.5753506907188263`*^9}, 3.575350995438611*^9, 
+   3.5755673611079197`*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["b)",
+  FontWeight->"Bold"],
+ " Identify the three most frequently used words in Darwin' s Origin of \
+Species and their respective frequencies."
+}], "Text",
+ CellChangeTimes->{{3.575350566830537*^9, 3.575350573377227*^9}}],
+
+Cell[TextData[{
+ "I had to dig around a little harder to figure ",
+ StyleBox["part b",
+  FontWeight->"Bold"],
+ " out ...\n"
+}], "Text",
+ CellChangeTimes->{{3.5753506001076736`*^9, 3.575350629592429*^9}},
+ Background->GrayLevel[0.85]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"wordList", "=", 
+   RowBox[{"StringSplit", "[", "data", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"lowerwordList", "=", 
+   RowBox[{"Map", "[", 
+    RowBox[{"ToLowerCase", ",", "wordList"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"sortedwordList", "=", 
+   RowBox[{"Sort", "[", "lowerwordList", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"wordFreq", "=", 
+   RowBox[{"Tally", "[", "sortedwordList", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"sortedFrequencyList", "=", 
+    RowBox[{"Sort", "[", 
+     RowBox[{"wordFreq", ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"#1", "[", 
+         RowBox[{"[", "2", "]"}], "]"}], ">", 
+        RowBox[{"#2", "[", 
+         RowBox[{"[", "2", "]"}], "]"}]}], "&"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+   "Top", " ", "three", " ", "frequent", " ", "words", " ", "in", " ", "the", 
+    " ", 
+    RowBox[{"\"\<Origin of Species\>\"", ".", " ", "This"}], " ", "snippet", 
+    " ", "was", " ", "inspired", " ", "by", " ", "the", " ", "help", " ", 
+    RowBox[{"manual", "'"}], "s", " ", "entry", " ", "on", " ", 
+    RowBox[{"Sort", "[", "...", "]"}]}], "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Take", "[", 
+  RowBox[{"sortedFrequencyList", ",", "3"}], 
+  "]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.5753507109376993`*^9, 3.575350821159165*^9}, {
+  3.5753509822361937`*^9, 3.57535098605764*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\<\"the\"\>", ",", "10104"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"of\"\>", ",", "7254"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"and\"\>", ",", "4289"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.575350771964017*^9, 3.5753508032058487`*^9}, 
+   3.575350999854898*^9, 3.57556736399553*^9}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.575350805939269*^9, 3.575350808791175*^9}}]
+}, Open  ]]
+},
+WindowSize->{740, 569},
+WindowMargins->{{Automatic, 145}, {Automatic, 0}},
+PrivateNotebookOptions->{"VersionedStylesheet"->{"Default.nb"[8.] -> False}},
+FrontEndVersion->"9.0 for Linux x86 (64-bit) (November 20, 2012)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 153, 2, 81, "Section"],
+Cell[735, 26, 308, 7, 51, "Text"],
+Cell[1046, 35, 282, 7, 87, "Text"],
+Cell[CellGroupData[{
+Cell[1353, 46, 1992, 52, 363, "Input"],
+Cell[3348, 100, 229, 4, 32, "Output"],
+Cell[3580, 106, 232, 4, 32, "Output"]
+}, Open  ]],
+Cell[3827, 113, 249, 6, 51, "Text"],
+Cell[4079, 121, 233, 7, 67, "Text"],
+Cell[CellGroupData[{
+Cell[4337, 132, 1490, 40, 209, "Input"],
+Cell[5830, 174, 384, 10, 32, "Output"]
+}, Open  ]],
+Cell[6229, 187, 92, 1, 32, "Input"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
